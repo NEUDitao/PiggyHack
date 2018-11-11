@@ -26,7 +26,7 @@ export default class AutoComplete extends Component {
 
                 query={{
                     // available options: https://developers.google.com/places/web-service/autocomplete
-                    key: '',
+                    key: 'AIzaSyB0YXF9YtcxMPDHP15MYFuD8dZyLSuu_kc',
                     language: 'en', // language of the results
                     types: 'address' // default: 'geocode'
                 }}

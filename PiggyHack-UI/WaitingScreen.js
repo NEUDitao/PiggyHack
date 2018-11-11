@@ -4,8 +4,9 @@ import {ActivityIndicator, View, Image, Text, StyleSheet} from 'react-native';
 export default class WaitingScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = {isLoading: true}
+        this.state = {isLoading: true};
         this.props.rideType = this.props.navigation.getParam('rideType', 'regular');
+        //console.log(this.props.rideType);
     }
 
     componentDidMount() {
@@ -31,13 +32,17 @@ export default class WaitingScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+        let ride = this.props.navigation.getParam('rideType', 'regular');
         setTimeout(() => {
+            console.log(ride);
+
             return fetch('http://c76e6b1f.ngrok.io/msg',{
                 method: 'POST',
-                body: {msg: this.props.rideType},
+                body: ride
             }) .then(()=>{
                 navigate("StarsPigs");
-            });
+            }).catch((error) => {
+                console.error(error)});
         }, 9000)
     }
 
