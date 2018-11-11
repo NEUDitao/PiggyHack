@@ -32,11 +32,12 @@ export default class WaitingScreen extends Component {
                 console.error(error);
             });
         setTimeout(() => {
-            fetch('http://c76e6b1f.ngrok.io/msg',{
+            return fetch('http://c76e6b1f.ngrok.io/msg',{
                 method: 'POST',
                 body: {msg: this.props.rideType},
+            }) .then(()=>{
+                navigate("StarsPigs");
             });
-            navigate("StarsPigs");
         }, 9000)
     }
 
