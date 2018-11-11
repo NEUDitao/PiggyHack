@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import { Text, TextInput, View, StyleSheet, Button } from 'react-native';
 import { Constants, MapView, Location, Permissions } from 'expo';
 import AutoComplete from "./AutoComplete";
 
-export default class App2 extends Component {
+export default class Map extends Component {
     state = {
         mapRegion: null,
         hasLocationPermissions: false,
@@ -32,6 +32,7 @@ export default class App2 extends Component {
     };
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
 
             <View style={{flex: 1}}>
@@ -39,6 +40,12 @@ export default class App2 extends Component {
                 <MapView
                     style={{flex: 1}}
                     region={this.state.mapRegion}
+                />
+                <Button
+                    title="Go to stars"
+                    onPress={() =>
+                        navigate('RideOptions', { })
+                    }
                 />
 
             </View>
