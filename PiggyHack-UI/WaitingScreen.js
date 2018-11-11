@@ -5,6 +5,7 @@ export default class WaitingScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {isLoading: true}
+        this.props.rideType = this.props.navigation.getParam('rideType', 'regular');
     }
 
     componentDidMount() {
@@ -20,9 +21,9 @@ export default class WaitingScreen extends Component {
             .then((responseJson) => {
                 let images = responseJson.data.images;
                 this.setState({
-                                  isLoading: false,
-                                  gif_url: images.fixed_width_downsampled.url
-                              }, function () {
+                    isLoading: false,
+                    gif_url: images.fixed_width_downsampled.url
+                }, function () {
 
                 });
 
@@ -31,9 +32,12 @@ export default class WaitingScreen extends Component {
                 console.error(error);
             });
         setTimeout(() => {
+            fetch('http://c76e6b1f.ngrok.io/msg',{
+                method: 'POST',
+                body: {msg: this.props.rideType},
+            });
             navigate("StarsPigs");
         }, 9000)
-        return fetch('http://google.com');
     }
 
     render() {
@@ -57,6 +61,13 @@ export default class WaitingScreen extends Component {
 
 }
 const styles = StyleSheet.create(
+<<<<<<< HEAD
+    {   headingText: {color: "#FFFFFF",
+        fontSize: 36,
+        textAlign: 'center',
+        fontWeight: 'bold'},
+        subText:{
+=======
     {
         headingText: {
             color: "#FFFFFF",
@@ -65,6 +76,7 @@ const styles = StyleSheet.create(
             fontWeight: 'bold'
         },
         subText: {
+>>>>>>> 546aa06f772e77480453713081028c5b687d880b
             fontSize: 24,
             textAlign: "center",
             fontWeight: 'bold',

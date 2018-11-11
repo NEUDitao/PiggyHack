@@ -10,7 +10,7 @@ class IconDefault extends Component {
             <TouchableWithoutFeedback
                 style={styles.iconContainer}
                 onPress={()=>{
-                    navigate('WaitingScreen');
+                    navigate('WaitingScreen', {rideType:'regular'});
                 }}>
                 <View>
                     <Image source={require('./assets/pig.png')} style={styles.iconImage}/>
@@ -29,7 +29,7 @@ class IconPool extends Component {
             <TouchableWithoutFeedback
                 style={styles.iconContainer}
                 onPress={()=>{
-                    navigate('WaitingScreen');
+                    navigate('WaitingScreen',{rideType:'pool'});
                 }}>
                 <View>
                     <Image source={require('./assets/3-pig.png')} style={styles.iconImage}/>
@@ -48,7 +48,7 @@ class IconFly extends Component{
             <TouchableWithoutFeedback
                 style={styles.iconContainer}
                 onPress={()=>{
-                    navigate('WaitingScreen');
+                    navigate('WaitingScreen',{rideType:'fly'});
                 }}>
                 <View>
                     <Image source={require('./assets/fly-pig.png')} style={styles.iconImage}/>
