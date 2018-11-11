@@ -1,70 +1,62 @@
-import React, { Component } from 'react';
-import { Text, TextInput, View, StyleSheet, Button } from 'react-native';
-import { Constants, MapView, Location, Permissions } from 'expo';
+import React, {Component} from 'react';
+import {Text, TextInput, View, StyleSheet, Button, TouchableOpacity} from 'react-native';
+import {Constants, MapView, Location, Permissions} from 'expo';
 import AutoComplete from "./AutoComplete";
+import MapPiece from "./MapPiece";
 
 export default class Map extends Component {
-    state = {
-        mapRegion: null,
-        hasLocationPermissions: false,
-        locationResult: null
-    };
-
-    componentDidMount() {
-        this._getLocationAsync();
-    }
-
-    _getLocationAsync = async () => {
-        let { status } = await Permissions.askAsync(Permissions.LOCATION);
-        if (status !== 'granted') {
-            this.setState({
-                              locationResult: 'Permission to access location was denied',
-                          });
-        } else {
-            this.setState({ hasLocationPermissions: true });
-        }
-
-        let location = await Location.getCurrentPositionAsync({});
-        this.setState({ locationResult: JSON.stringify(location) });
-
-        // Center the map on the location we just fetched.
-        this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }});
-    };
+    static navigationOptions = {title: 'Welcome', header: null};
 
     render() {
-        const { navigate } = this.props.navigation;
+        const {navigate} = this.props.navigation;
         return (
 
-            <View style={{flex: 1}}>
-
-                <MapView
-                    style={{flex: 1}}
-                    region={this.state.mapRegion}
-                />
-                <Button
-                    title="Go to stars"
-                    onPress={() =>
-                        navigate('RideOptions', { })
-                    }
-                />
+            <View style={styles.container}>
+                <MapPiece style={styles.MapPortion}/>
+                <TouchableOpacity style={styles.searchContainer}
+                                  onPress={() => navigate('AutoComplete')}>
+                    <Text style={styles.searchBar}>
+                        Set your destination
+                    </Text>
+                </TouchableOpacity>
 
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-                                     container: {
-                                         flex: 1,
-                                         alignItems: 'center',
-                                         justifyContent: 'center',
-                                         paddingTop: Constants.statusBarHeight
-                                     },
-                                     paragraph: {
-                                         margin: 24,
-                                         fontSize: 18,
-                                         fontWeight: 'bold',
-                                         textAlign: 'center',
-                                         color: '#34495e',
-                                     },
-                                 });
+const styles = StyleSheet.create(
+    {
+        container: {
+            flex: 1
+        },
+        searchContainer: {
+            position: 'absolute',
+            top: 40,
+            height: 42,
+            left: 10,
+            right: 10,
+            backgroundColor: "#FFFFFF",
+            borderRadius:5,
+            shadowColor: "#000000",
+            shadowOffset: {width: 0, height: 2},
+            shadowOpacity: 0.8,
+            shadowRadius: 2,
+            elevation: 4,
+        },
+        searchBar: {
+            position: 'relative',
+            textAlign: "center",
+            fontSize: 18,
+            color: "#999999",
+            flex: 1,
+            lineHeight:42
+        },
+        MapPortion: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+        }
+    });

@@ -7,7 +7,7 @@ export default class StarsPigs extends Component {
   render() {
     return (
       <View style={styles.container}>
-            <RatePage title='Rate your piggy!'/>
+            <RatePage title='Rate your ride!'/>
       </View>
     );
   }
@@ -65,29 +65,35 @@ class RateCategory extends Component<Props>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    //backgroundColor: '#fff',
+      backgroundColor: '#8C8C8C',
     alignItems: 'center',
     justifyContent: 'center',
   },
     myStarStyle: {
-    color: 'lightpink',
-    backgroundColor: 'transparent',
+    /*color: 'lightpink',
+    backgroundColor: 'transparent', */
+    backgroundColor: "#FFFFFF",
+        color: '#FFFFFF',
     textShadowColor: 'lightpink',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 2,
   },
   myEmptyStarStyle: {
     color: 'white',
+      backgroundColor: "#ffffff"
   },
   titleRatingText: {
       fontSize: 30,
       fontWeight: 'bold',
-      color: 'lightpink',
+      //color: 'lightpink',
+      color: '#ffffff',
       textAlign: 'center',
       paddingTop: 10,
   },
   ratingCategoryText: {
-      color: 'lightpink',
+      //color: 'lightpink',
+      color: "#ffffff",
       fontSize: 20,
       fontStyle: 'italic',
       textAlign: 'left',
@@ -98,7 +104,8 @@ const styles = StyleSheet.create({
   },
 
   ratingComponent: {
-      backgroundColor:'white',
+      //backgroundColor:'white',
+      backgroundColor: '#8C8C8C',
       flex:1,
       padding: 3,
   },
