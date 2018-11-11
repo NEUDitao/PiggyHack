@@ -8,7 +8,8 @@ export default class WaitingScreen extends Component {
     }
 
     componentDidMount() {
-        return fetch(
+        const { navigate } = this.props.navigation;
+        fetch(
             'http://api.giphy.com/v1/gifs/random?api_key=a6bCD3e4s1e21cWBnCTi1gjsLd3wjXZs&tag=piggyback',
             {
                 headers: {
@@ -29,19 +30,24 @@ export default class WaitingScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+        setTimeout(() => {
+            navigate("StarsPigs");
+        }, 9000)
+        return fetch('http://google.com');
     }
 
     render() {
         if (this.state.isLoading) {
             return (
                 <View style={{flex: 1, padding: 20}}>
-                    <Text>Loading</Text>
+                    <Text style={styles.headingText}>...</Text>
                 </View>
             )
         }
 
         return (
-            <View style={{flex: 1, paddingTop: 20, alignItems: "center", backgroundColor:'#8C8C8C'}}>
+            <View
+                style={{flex: 1, paddingTop: 20, alignItems: "center", backgroundColor: '#8C8C8C'}}>
                 <Image source={{uri: this.state.gif_url}} style={{height: "50%", width: "50%"}}/>
                 <Text style={styles.headingText}>Your ride will arrive shortly!</Text>
                 <Text style={styles.subText}>#Piggyback</Text>
@@ -49,14 +55,16 @@ export default class WaitingScreen extends Component {
         );
     }
 
-
 }
 const styles = StyleSheet.create(
-    {   headingText: {color: "#FFFFFF",
+    {
+        headingText: {
+            color: "#FFFFFF",
             fontSize: 36,
             textAlign: 'center',
-            fontWeight: 'bold'},
-        subText:{
+            fontWeight: 'bold'
+        },
+        subText: {
             fontSize: 24,
             textAlign: "center",
             fontWeight: 'bold',

@@ -72,7 +72,7 @@ export default class RideOption extends Component {
                     justifyContent: 'space-around',
                     alignItems: 'center', backgroundColor:'#8C8C8C', textColor: '#FFFFFF'}}>
                     <IconDefault title='NoPigDeal' navigation={navigation}/>
-                    <IconPool title='PigPool' navigation={navigation}/>
+                    <IconPool title='PiggyPool' navigation={navigation}/>
                     <IconFly title='FlyingPig' navigation={navigation}/>
                 </View>
             </View>
