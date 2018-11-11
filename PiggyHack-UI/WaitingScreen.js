@@ -61,13 +61,7 @@ export default class WaitingScreen extends Component {
 
 }
 const styles = StyleSheet.create(
-<<<<<<< HEAD
-    {   headingText: {color: "#FFFFFF",
-        fontSize: 36,
-        textAlign: 'center',
-        fontWeight: 'bold'},
-        subText:{
-=======
+
     {
         headingText: {
             color: "#FFFFFF",
@@ -76,7 +70,6 @@ const styles = StyleSheet.create(
             fontWeight: 'bold'
         },
         subText: {
->>>>>>> 546aa06f772e77480453713081028c5b687d880b
             fontSize: 24,
             textAlign: "center",
             fontWeight: 'bold',
